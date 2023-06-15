@@ -1,0 +1,60 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <iomanip>
+
+int main() {
+    double value = 0.0;
+
+    std::cout << "Enter the volume (liters): ";
+    std::string inputA;
+    std::getline(std::cin, inputA);
+    double a;
+    std::istringstream(inputA) >> a;
+
+    std::cout << "Enter the mass of boat (kg): ";
+    std::string inputB;
+    std::getline(std::cin, inputB);
+    double b;
+    std::istringstream(inputB) >> b;
+
+    std::cout << "Enter the hight of shipboard (m): ";
+    std::string inputC;
+    std::getline(std::cin, inputC);
+    double c;
+    std::istringstream(inputC) >> c;
+
+    std::cout << "Enter the value of waterline: ";
+    std::string input74;
+    std::getline(std::cin, input74);
+    double num74;
+    std::istringstream(input74) >> num74;
+
+    while (true) {
+        std::string inputStr;
+
+        std::cout << "Enter a number of kilograms: ";
+        std::getline(std::cin, inputStr);
+
+        if (inputStr == "0") {
+            break;
+        }
+
+        double input;
+        std::istringstream(inputStr) >> input;
+
+        value += (input - 0) * (a/b*c);
+        std::cout << "Value: " << value << std::endl;
+
+        if (value > num74 && value < num74 + 3.5) {
+            std::cout << "Limit of weight" << std::endl;
+        }
+        else if (value > num74 + 1.1) {
+            std::cout << "Dangerous!";
+            double difference = (value - (num74 + 1.0)) / (a/b*c);
+            std::cout << " (Number of kilograms are above the limit: " << std::setprecision(2) << std::fixed << difference << " )" << std::endl;
+        }
+    }
+
+    return 0;
+}
